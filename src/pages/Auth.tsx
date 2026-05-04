@@ -47,7 +47,10 @@ export default function AuthPage() {
       } else {
         const parsed = loginSchema.safeParse({ email, password });
         if (!parsed.success) { toast.error(parsed.error.issues[0].message); return; }
-        const { error } = await supabase.auth.signInWithPassword(parsed.data);
+        const { error } = await supabase.auth.signInWithPassword({
+          email: parsed.data.email,
+          password: parsed.data.password,
+        });
         if (error) { toast.error(error.message); return; }
         navigate("/", { replace: true });
       }
