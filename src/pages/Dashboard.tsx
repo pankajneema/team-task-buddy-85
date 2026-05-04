@@ -28,7 +28,7 @@ export default function Dashboard() {
       setTasks(t ?? []);
       setProjectCount(pc ?? 0);
       setPeople(Object.fromEntries((ps ?? []).map(p => [p.id, p.name || "Unknown"])));
-      setProjects(Object.fromEntries((pr ?? []).map(p => [p.id, p.name]));)
+      setProjects(Object.fromEntries((pr ?? []).map(p => [p.id, p.name])));
       setLoading(false);
     })();
   }, []);
